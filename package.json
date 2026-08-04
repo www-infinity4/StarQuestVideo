@@ -1,0 +1,9 @@
+{
+  "name": "starquest-tv",
+  "version": "1.0.0",
+  "description": "StarQuest TV — entertainment operating system with Star Coins",
+  "scripts": {
+    "test": "node tests/starquest.test.js"
+  },
+  "devDependencies": {}
+}
