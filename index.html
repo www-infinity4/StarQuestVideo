@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StarQuest TV</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-logo">
+      <span class="star-icon">★</span> StarQuest TV
+    </div>
+    <nav class="header-nav">
+      <a href="#" class="nav-link active" data-page="browse">Browse</a>
+      <a href="#" class="nav-link" data-page="rooms">Unlock Rooms</a>
+      <a href="#" class="nav-link" data-page="auctions">Auctions</a>
+    </nav>
+    <div class="header-wallet" id="walletBtn">
+      <span class="coin-icon">🌟</span>
+      <span id="coinCount">0</span> Star Coins
+    </div>
+  </header>
+
+  <!-- Pages -->
+  <main>
+    <!-- Browse Page -->
+    <section id="page-browse" class="page active">
+      <div class="hero">
+        <h1>Your Entertainment, Rewarded</h1>
+        <p>Watch. Share. Earn Star Coins. Unlock more.</p>
+      </div>
+      <div class="content-grid" id="contentGrid"></div>
+    </section>
+
+    <!-- Rooms Page -->
+    <section id="page-rooms" class="page">
+      <h2 class="section-title">Unlock Rooms</h2>
+      <p class="section-sub">Spend Star Coins to enter private viewings and live watch parties.</p>
+      <div class="rooms-grid" id="roomsGrid"></div>
+    </section>
+
+    <!-- Auctions Page -->
+    <section id="page-auctions" class="page">
+      <h2 class="section-title">Collectible Auctions</h2>
+      <p class="section-sub">Bid Star Coins on exclusive collectibles and creator drops.</p>
+      <div class="auctions-grid" id="auctionsGrid"></div>
+    </section>
+  </main>
+
+  <!-- Video Player Modal -->
+  <div id="playerModal" class="modal hidden">
+    <div class="modal-overlay" id="playerOverlay"></div>
+    <div class="modal-content player-modal">
+      <button class="modal-close" id="playerClose">✕</button>
+      <div class="player-screen">
+        <div class="player-placeholder" id="playerPlaceholder">
+          <div class="play-icon">▶</div>
+          <p id="playerTitle">Movie Title</p>
+        </div>
+      </div>
+      <div class="player-meta">
+        <div class="player-info">
+          <h3 id="playerName">Title</h3>
+          <p id="playerDesc">Description</p>
+          <span class="sponsor-badge" id="playerSponsor"></span>
+        </div>
+        <div class="player-actions">
+          <button class="btn btn-share" id="shareBtn">
+            <span>⬆</span> Share
+            <span class="share-count-badge" id="shareCountBadge">0</span>
+          </button>
+          <button class="btn btn-cosmo" id="cosmoBtn">
+            <span>🤖</span> Ask Cosmo
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wallet Modal -->
+  <div id="walletModal" class="modal hidden">
+    <div class="modal-overlay" id="walletOverlay"></div>
+    <div class="modal-content wallet-modal">
+      <button class="modal-close" id="walletClose">✕</button>
+      <h2 class="modal-title">⭐ Star Coin Wallet</h2>
+      <div class="wallet-balance">
+        <span class="big-coin">🌟</span>
+        <span class="balance-number" id="walletBalance">0</span>
+        <span class="balance-label">Star Coins</span>
+      </div>
+      <div class="wallet-coupons">
+        <h3>Active Coupons</h3>
+        <div id="couponList" class="coupon-list"></div>
+      </div>
+      <div class="wallet-history">
+        <h3>Unlock History</h3>
+        <ul id="unlockHistory" class="history-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cosmo Modal -->
+  <div id="cosmoModal" class="modal hidden">
+    <div class="modal-overlay" id="cosmoOverlay"></div>
+    <div class="modal-content cosmo-modal">
+      <button class="modal-close" id="cosmoClose">✕</button>
+      <div class="cosmo-header">
+        <div class="cosmo-avatar">🤖</div>
+        <div>
+          <h2>Cosmo</h2>
+          <p>Your AI Entertainment Companion</p>
+        </div>
+      </div>
+      <div class="cosmo-chat" id="cosmoChat"></div>
+      <div class="cosmo-input-row">
+        <input type="text" id="cosmoInput" class="cosmo-input" placeholder="Ask Cosmo anything…" />
+        <button class="btn btn-cosmo-send" id="cosmoSend">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Star Coin Earned Animation -->
+  <div id="coinAnimation" class="coin-animation hidden">
+    <div class="coin-burst">
+      <div class="coin-large">🌟</div>
+      <h2>Star Coin Earned!</h2>
+      <p id="coinAnimMsg">You earned a Star Coin for sharing.</p>
+    </div>
+  </div>
+
+  <!-- Sponsor Ad Moment -->
+  <div id="sponsorAd" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content sponsor-modal">
+      <button class="modal-close" id="sponsorClose">✕</button>
+      <div class="sponsor-content">
+        <div class="sponsor-logo" id="sponsorLogo">🎬</div>
+        <h2 id="sponsorTitle">Sponsor Offer</h2>
+        <p id="sponsorMsg">You unlocked a sponsor reward!</p>
+        <div class="coupon-card" id="sponsorCoupon"></div>
+        <button class="btn btn-primary" id="sponsorClaim">Claim Coupon</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Room Unlock Confirm -->
+  <div id="roomModal" class="modal hidden">
+    <div class="modal-overlay" id="roomOverlay"></div>
+    <div class="modal-content room-unlock-modal">
+      <button class="modal-close" id="roomClose">✕</button>
+      <h2 id="roomTitle">Private Viewing Room</h2>
+      <p id="roomDesc">Join an exclusive watch party.</p>
+      <div class="room-cost">
+        <span class="coin-icon">🌟</span>
+        <span id="roomCost">2</span> Star Coins to enter
+      </div>
+      <div class="room-actions">
+        <button class="btn btn-primary" id="roomConfirm">Enter Room</button>
+        <button class="btn btn-secondary" id="roomCancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
