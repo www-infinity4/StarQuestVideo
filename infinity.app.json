@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0",
+  "id": "starquest-tv",
+  "name": "StarQuest TV",
+  "repository": "www-infinity4/StarQuestVideo",
+  "category": "media",
+  "status": "prototype",
+  "flagship": true,
+  "entryPoint": "./index.html",
+  "description": "Infinity flagship television, video, rewards, rooms, collectibles, and AI companion experience.",
+  "capabilities": [
+    "video-catalog",
+    "player",
+    "watch-rooms",
+    "rewards-demo",
+    "collectibles-demo",
+    "sponsor-offers-demo",
+    "cosmo-assistant-ui"
+  ],
+  "events": {
+    "publishes": [
+      "starquest.content.opened",
+      "starquest.content.shared",
+      "starquest.room.unlocked",
+      "starquest.reward.earned"
+    ],
+    "subscribes": [
+      "infinity.identity.changed",
+      "infinity.navigation.requested"
+    ]
+  },
+  "security": {
+    "clientSecretsAllowed": false,
+    "financialCustody": false,
+    "realMoney": false,
+    "contentRightsRequired": true
+  }
+}
