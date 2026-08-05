@@ -5,9 +5,9 @@
   "repository": "www-infinity4/StarQuestVideo",
   "category": "media",
   "status": "prototype",
-  "flagship": true,
+  "flagship": false,
   "entryPoint": "./index.html",
-  "description": "Infinity flagship television, video, rewards, rooms, collectibles, and AI companion experience.",
+  "description": "Secondary Infinity entertainment, rewards, rooms, collectibles, and AI companion application.",
   "capabilities": [
     "video-catalog",
     "player",
